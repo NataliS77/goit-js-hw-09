@@ -15,21 +15,28 @@ function onClickStart(event){
     bodyEl.style.backgroundColor = getRandomHexColor(); 
 }, 1000);
 console.log(event)
+btnStart.disabled = true;
+ btnStop.disabled = false;
+// btnStart.setAttribute('disabled', 'disabled');
+// btnStop.removeAttribute('disabled')
 }
-btnStart.setAttribute('disabled', 'disabled');
-btnStop.removeAttribute('disabled')
+
 
 function onClickStop(){
     clearInterval(timerId);
-console.log (timerId)
+    console.log (timerId)
+
+   btnStart.disabled = false;
+ btnStop.disabled = true;
 }
+// btnStop.setAttribute('disabled', 'disabled');
+// btnStart.removeAttribute('disabled')
+// }
+
 
 function getRandomHexColor() {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
-//   const disableButton=()=>{
-//   console.log('va') 
-//    btnStart.disabled = true;
-// }
+ 
   
-//   bodyStart.addEventListener('click',disableButton);
+ 
