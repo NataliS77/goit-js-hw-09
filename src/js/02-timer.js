@@ -1,17 +1,20 @@
 
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 console.log(flatpickr)
-const input = document.querySelector('#datetime-picker')
-console.log(input)
-flatpickr(input,{
-   
-   onclose(selectedDates){
-    console.log(selectedDates)
-   } 
+console.log(Notify)
 
-});   
+const refs = {
+  input: document.querySelector('#datetime-picker'),
+  btnStart: document.querySelector('[data-start]'),
+  days: document.querySelector('[data-days]'),
+  hours: document.querySelector('[data-hours]'),
+  minutes: document.querySelector('[data-minutes]'),
+  seconds: document.querySelector('[data-seconds]'),
+}
+
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -21,6 +24,20 @@ const options = {
     console.log(selectedDates[0]);
   },
 };
+
+
+console.log(refs.input)
+flatpickr(refs.input, options, {
+});   
+setInterval(()=>{
+if (selectedDates < defaultDate){
+ Notiflix.Notify.failure("Please choose a date in the future");
+}
+})
+
+function addLeadingZero(value){
+  return String(value).padStart[2,'0']
+}
 function convertMs(ms) {
    // Number of milliseconds per unit of time
    const second = 1000;
@@ -43,3 +60,5 @@ function convertMs(ms) {
  console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
  console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
  console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+
+//  refs.btnStart.addEventListener('click', timer.start)
