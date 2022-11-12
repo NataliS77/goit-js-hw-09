@@ -14,9 +14,11 @@ const refs = {
   seconds: document.querySelector('[data-seconds]'),
 }
 
-refs.btnStart.disabled = true;
+
 let timerId = null;
+refs.btnStart.disabled = true;
 refs.btnStart.addEventListener('click', onTimerStart)
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -33,19 +35,21 @@ const options = {
  Notify.failure("Please choose a date in the future");
       }
      
-     }
+     },
   };
 
 
 const pickDate = flatpickr(refs.input, options);
 
 function onTimerStart(){
-  const selectedDates = pickDate.selectedDates [0];
+  const selectedDate = pickDate.selectedDates[0];
+  console.log('selectedDate',selectedDate)
 
   timerId = setInterval(()=>{
 
     const currentTime = new Date();
-    const countdownTimer =   selectedDates - currentTime;
+    console.log('currentTime',currentTime);
+    const countdownTimer =   selectedDate - currentTime;
     refs.btnStart.disabled = true;
 
     if (countdownTimer < 0) {
@@ -63,8 +67,7 @@ function onTimerStart(){
         refs.minutes.textContent = minutes;
         refs.seconds.textContent = seconds;
   
-  
-  
+    
   },1000)
 }
 
@@ -91,10 +94,10 @@ function convertMs(ms) {
    return { days, hours, minutes, seconds };
  }
  
-//  console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
-//  console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
-//  console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+ console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
+ console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
+ console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
 
-// 
+
 
 
