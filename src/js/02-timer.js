@@ -23,6 +23,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
+    const currentDate = new Date();
         // console.log(selectedDates[0]);
     if (selectedDates[0] - currentDate > 0){
       refs.btnStart.disabled = false;
