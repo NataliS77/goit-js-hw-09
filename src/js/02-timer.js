@@ -22,6 +22,7 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
+
   onClose(selectedDates) {
     const currentDate = new Date();
         // console.log(selectedDates[0]);
@@ -29,7 +30,7 @@ const options = {
       refs.btnStart.disabled = false;
     }else{
       refs.btnStart.disabled = true;
- Notiflix.Notify.failure("Please choose a date in the future");
+ Notify.failure("Please choose a date in the future");
       }
      
      }
