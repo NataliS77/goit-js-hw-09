@@ -37,7 +37,7 @@ const options = {
   };
 
 
-const pickDate = flatpickr(refs.input,options);
+const pickDate = flatpickr(refs.input, options);
 
 function onTimerStart(){
   const selectedDates = pickDate.selectedDates [0];
@@ -45,18 +45,18 @@ function onTimerStart(){
   timerId = setInterval(()=>{
 
     const currentTime = new Date();
-   
-    const countdownTimer = selectedDates - currentTime;
+    const countdownTimer =   selectedDates - currentTime;
     refs.btnStart.disabled = true;
 
-    if (countdownTimer <= 0) {
+    if (countdownTimer < 0) {
     // останавливаем таймер timerId
     clearInterval(timerId);
+    return
   }
     
     const { days, hours, minutes, seconds } = convertMs(currentTime)
           console.log(`${days}:${hours}:${minutes}:${seconds}`)
-        // console.log(deltaTime)
+        // console.log(currentTime)
   
        refs.days.textContent = days;
         refs.hours.textContent = hours;
@@ -69,45 +69,7 @@ function onTimerStart(){
 }
 
 
-  
-
-// let startDate = new Date('2022 11 16 21:45')
-// console.log(startDate)
-// const timeCout =()=>{
-//   let nowTime = new Date();
-//   console.log(nowTime)
-//   let deltaTime = startDate - nowTime;
-  
-//   const { days, hours, minutes, seconds } = convertMs(deltaTime)
-//         console.log(`${days}:${hours}:${minutes}:${seconds}`)
-//       console.log(deltaTime)
-
-//      refs.days.textContent = days;
-//       refs.hours.textContent = hours;
-//       refs.minutes.textContent = minutes;
-//       refs.seconds.textContent = seconds;
-
-
-// }
-// timeCout()
-// setInterval((timeCout), 1000);
-
-
-// const timer={
-//   srart(){
-//     const startTime = new Date();
-//     setInterval(()=>{
-//       const currentTime = new Date()
-//      const deltaTime = startTime - currentTime;
-//      const { days, hours, minutes, seconds } = convertMs(deltaTime)
-//       console.log(`${days}:${hours}:${minutes}:${seconds}`)
-//     console.log(startTime)
-//     },1000)
-//   },
-// };
-// timer.srart();
-
-function addLeadingZero(value){
+  function addLeadingZero(value){
   return String(value).padStart(2,'0')
 }
 function convertMs(ms) {
