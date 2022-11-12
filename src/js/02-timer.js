@@ -54,7 +54,7 @@ function onTimerStart(){
     clearInterval(timerId);
   }
     
-    const { days, hours, minutes, seconds } = convertMs(deltaTime)
+    const { days, hours, minutes, seconds } = convertMs(currentTime)
           console.log(`${days}:${hours}:${minutes}:${seconds}`)
         // console.log(deltaTime)
   
