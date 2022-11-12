@@ -3,7 +3,7 @@ import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // console.log(flatpickr)
-console.log(Notify)
+// console.log(Notify)
 
 const refs = {
   input: document.querySelector('#datetime-picker'),
@@ -39,17 +39,18 @@ const options = {
   };
 
 
-const pickDate = flatpickr(refs.input, options);
+const pickDate = flatpickr(refs.input,options,);
 
 function onTimerStart(){
   const selectedDate = pickDate.selectedDates[0];
-  console.log('selectedDate',selectedDate)
+  // console.log('selectedDate',selectedDate)
 
   timerId = setInterval(()=>{
 
     const currentTime = new Date();
-    console.log('currentTime',currentTime);
+    // console.log('currentTime',currentTime);
     const countdownTimer =   selectedDate - currentTime;
+    // console.log('countdownTimer',countdownTimer)
     refs.btnStart.disabled = true;
 
     if (countdownTimer < 0) {
@@ -58,7 +59,7 @@ function onTimerStart(){
     return
   }
     
-    const { days, hours, minutes, seconds } = convertMs(currentTime)
+    const { days, hours, minutes, seconds } = convertMs(countdownTimer)
           console.log(`${days}:${hours}:${minutes}:${seconds}`)
         // console.log(currentTime)
   
@@ -94,9 +95,9 @@ function convertMs(ms) {
    return { days, hours, minutes, seconds };
  }
  
- console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
- console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
- console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
+//  console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
+//  console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
+//  console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
 
 
 
