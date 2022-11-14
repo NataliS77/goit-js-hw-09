@@ -26,19 +26,18 @@ function createPromise(position, delay) {
   event.preventDefault();
 
 const formEl = event.currentTarget.elements;
-const delay = formEl.delay.value
-const step = formEl.step.value;
-const amount = formEl.amount.value;
+const delay = Number(formEl.delay.value);
+const step = Number(formEl.step.value);
+const amount = Number(formEl.amount.value);
 
-  for (let i= 1; i <= Number(amount); i +=1){
-    delay + step;
+  for (let i= 1; i <= amount; i +=1){
 
     createPromise(i,delay).then(onSuccess).catch(onError)
-
+delay + step;
     refs.form.reset(); 
 
   }
-
+console.log(onCreatePromises)
 }
 function onSuccess({position,delay}){
   Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);

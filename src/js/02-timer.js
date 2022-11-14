@@ -29,7 +29,7 @@ const options = {
     const currentDate = new Date();
         console.log(selectedDates[0]);
     if (selectedDates[0] - currentDate > 0){
-      refs.btnStart.disabled = false;
+      refs.btnStart.disabled = false; 
     }else{
       refs.btnStart.disabled = true;
  Notify.failure("Please choose a date in the future");
